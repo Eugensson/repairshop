@@ -1,3 +1,4 @@
+import CustomerTable from "@/app/(rs)/customers/CustomerTable";
 import CustomerSearch from "@/app/(rs)/customers/CustomerSearch";
 
 import { getCustomerSearchResults } from "@/lib/queries/getCustomerSearchResults";
@@ -20,7 +21,11 @@ export default async function Customers({
   return (
     <>
       <CustomerSearch />
-      <pre>{JSON.stringify(results, null, 2)}</pre>
+      {results.length ? (
+        <CustomerTable data={results} />
+      ) : (
+        <p className="mt-4">No results found</p>
+      )}
     </>
   );
 }

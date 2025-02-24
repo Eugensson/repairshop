@@ -1,3 +1,5 @@
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+
 import { BackButton } from "@/components/BackButton";
 import CustomerForm from "@/app/(rs)/customers/form/CustomerForm";
 
@@ -21,6 +23,12 @@ export default async function CustomerFormPage({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   try {
+    const { getPermission } = getKindeServerSession();
+
+    const managerPermition = await getPermission("manager");
+
+    const isManager = managerPermition?.isGranted;
+
     const { customerId } = await searchParams;
 
     if (customerId) {
@@ -37,9 +45,15 @@ export default async function CustomerFormPage({
         );
       }
 
-      return <CustomerForm customer={customer} />;
+      return (
+        <CustomerForm
+          key={customerId}
+          isManager={isManager}
+          customer={customer}
+        />
+      );
     } else {
-      return <CustomerForm />;
+      return <CustomerForm key="new" isManager={isManager} />;
     }
   } catch (e) {
     if (e instanceof Error) {

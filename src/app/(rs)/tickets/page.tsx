@@ -1,4 +1,5 @@
 import TicketSearch from "@/app/(rs)/tickets/TicketSearch";
+import TicketTable from "@/app/(rs)/tickets/TicketTable";
 
 import { getOpenTickets } from "@/lib/queries/getOpenTickets";
 import { getTicketSearchResults } from "@/lib/queries/getTicketSearchResults";
@@ -20,7 +21,11 @@ export default async function Tickets({
     return (
       <>
         <TicketSearch />
-        <pre>{JSON.stringify(results, null, 2)}</pre>
+        {results.length ? (
+          <TicketTable data={results} />
+        ) : (
+          <p className="mt-4">No open tickets found</p>
+        )}
       </>
     );
   }
@@ -30,7 +35,11 @@ export default async function Tickets({
   return (
     <>
       <TicketSearch />
-      <pre>{JSON.stringify(results, null, 2)}</pre>
+      {results.length ? (
+        <TicketTable data={results} />
+      ) : (
+        <p className="mt-4">No results found</p>
+      )}
     </>
   );
 }

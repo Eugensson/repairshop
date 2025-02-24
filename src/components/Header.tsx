@@ -12,9 +12,9 @@ export function Header() {
     <header className="sticky top-0 z-20 animate-slide bg-background h-12 p-2 border-b">
       <div className="w-full h-8 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <NavButton icon={HomeIcon} label="Home" href="/home" />
+          <NavButton icon={HomeIcon} label="Home" href="/tickets" />
           <Link
-            href="/home"
+            href="/tickets"
             className="flex items-center justify-center gap-2 ml-0"
             title="Home"
           >

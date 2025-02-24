@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Button } from "@/components/ui/button";
-
 export const metadata = {
   title: "Page Not Found",
 };
@@ -22,9 +20,9 @@ export default function NotFound() {
           title="Page Not Found"
           className="m-0 rounded-xl"
         />
-        <Button variant="link" asChild>
-          <Link href="/home">Back to Home</Link>
-        </Button>
+        <Link href="/tickets" className="text-center hover:underline">
+          <h3>Go Home</h3>
+        </Link>
       </div>
     </div>
   );
