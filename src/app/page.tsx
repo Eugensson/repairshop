@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function Home() {
@@ -19,6 +20,9 @@ export default function Home() {
           <Link href="tel:+1-816-555-5555" className="hover:underline">
             816-555-5555
           </Link>
+          <Button variant="ghost" asChild>
+            <Link href="/login">Login</Link>
+          </Button>
         </div>
       </main>
     </div>
